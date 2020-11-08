@@ -14,7 +14,7 @@
         [p]xTeVe emulates a SiliconDust HDHomeRun OTA tuner, which allows it to expose IPTV style channels to software, which would not normally support it.[/p]&#xD;
         [p]OpenVPN has been added to the container to allow users who have issues with their ISP shaping IPTV to bypass the shaping using a VPN[/p]&#xD;
         [h4]Configuration[/h4]&#xD;
-        [p]Please refer to my github repo [a href='https://github.com/brycelarge/xteve-vpn']xteve-vpn[/a][/p]
+        [p]Please refer to my github repo [a href='https://github.com/brycelarge/xteve-vpn']xteve-vpn[/a][/p]&#xD;
         &#xD;
     </Overview>
     <Category>Downloaders: MediaServer:Video Network:Proxy</Category>
@@ -32,7 +32,7 @@
         [p]xTeVe emulates a SiliconDust HDHomeRun OTA tuner, which allows it to expose IPTV style channels to software, which would not normally support it.[/p]&#xD;
         [p]OpenVPN has been added to the container to allow users who have issues with their ISP shaping IPTV to bypass the shaping using a VPN[/p]&#xD;
         [h4]Configuration[/h4]&#xD;
-        [p]Please refer to my github repo [a href='https://github.com/brycelarge/xteve-vpn']xteve-vpn[/a][/p]
+        [p]Please refer to my github repo [a href='https://github.com/brycelarge/xteve-vpn']xteve-vpn[/a][/p]&#xD;
         &#xD;
     </Description>
     <Networking>
