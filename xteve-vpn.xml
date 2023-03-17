@@ -11,18 +11,11 @@
     <Project/>
     <Overview>
         [p]xTeVe is a M3U proxy server for Plex, Emby and any client and provider which supports the .TS and .M3U8 (HLS)
-        streaming formats.[/p]&#xD;
-        [p]xTeVe emulates a SiliconDust HDHomeRun OTA tuner, which allows it to expose IPTV style channels to software,
-        which would not normally support it.[/p]&#xD;
-        [p]OpenVPN has been added to the container to allow users who have issues with their ISP shaping IPTV to bypass
-        the shaping using a VPN[/p]&#xD;
-        &#xD;
-        [p]I built this VPN version to bypass my ISP shaping during peak usage times. In the evenings I noticed my IPTV
+        streaming formats.[/p][p]xTeVe emulates a SiliconDust HDHomeRun OTA tuner, which allows it to expose IPTV style channels to software,
+        which would not normally support it.[/p][p]OpenVPN has been added to the container to allow users who have issues with their ISP shaping IPTV to bypass
+        the shaping using a VPN[/p][p]I built this VPN version to bypass my ISP shaping during peak usage times. In the evenings I noticed my IPTV
         channels were freezing and timing out. After some back and forth between myself and the IPTV provider I came to
-        the realisation that its my ISP that's the cause. Hopefully it helps others out there as its helped me.[/p]&#xD;
-        [h4]Configuration[/h4]&#xD;
-        [p]Please refer to my github repo [a href='https://github.com/brycelarge/xteve-vpn']xteve-vpn[/a][/p]&#xD;
-        &#xD;
+        the realisation that its my ISP that's the cause. Hopefully it helps others out there as its helped me.[/p][p][h4]Configuration[/h4]Please refer to my github repo [a href='https://github.com/brycelarge/xteve-vpn']xteve-vpn[/a][/p];
     </Overview>
     <Category>MediaApp:Other Network:Proxy</Category>
     <WebUI>http://[IP]:[PORT:34400]/web/</WebUI>
@@ -36,18 +29,11 @@
     <DonateLink/>
     <Description>
         [p]xTeVe is a M3U proxy server for Plex, Emby and any client and provider which supports the .TS and .M3U8 (HLS)
-        streaming formats.[/p]&#xD;
-        [p]xTeVe emulates a SiliconDust HDHomeRun OTA tuner, which allows it to expose IPTV style channels to software,
-        which would not normally support it.[/p]&#xD;
-        [p]OpenVPN has been added to the container to allow users who have issues with their ISP shaping IPTV to bypass
-        the shaping using a VPN[/p]&#xD;
-        &#xD;
-        [p]I built this VPN version to bypass my ISP shaping during peak usage times. In the evenings I noticed my IPTV
+        streaming formats.[/p][p]xTeVe emulates a SiliconDust HDHomeRun OTA tuner, which allows it to expose IPTV style channels to software,
+        which would not normally support it.[/p][p]OpenVPN has been added to the container to allow users who have issues with their ISP shaping IPTV to bypass
+        the shaping using a VPN[/p][p]I built this VPN version to bypass my ISP shaping during peak usage times. In the evenings I noticed my IPTV
         channels were freezing and timing out. After some back and forth between myself and the IPTV provider I came to
-        the realisation that its my ISP that's the cause. Hopefully it helps others out there as its helped me.[/p]&#xD;
-        [h4]Configuration[/h4]&#xD;
-        [p]Please refer to my github repo [a href='https://github.com/brycelarge/xteve-vpn']xteve-vpn[/a][/p]&#xD;
-        &#xD;
+        the realisation that its my ISP that's the cause. Hopefully it helps others out there as its helped me.[/p][p][h4]Configuration[/h4]Please refer to my github repo [a href='https://github.com/brycelarge/xteve-vpn']xteve-vpn[/a][/p];
     </Description>
     <Networking>
         <Mode>bridge</Mode>
@@ -55,6 +41,11 @@
             <Port>
                 <HostPort>34400</HostPort>
                 <ContainerPort>34400</ContainerPort>
+                <Protocol>tcp</Protocol>
+            </Port>
+            <Port>
+                <HostPort>8181</HostPort>
+                <ContainerPort>8181</ContainerPort>
                 <Protocol>tcp</Protocol>
             </Port>
         </Publish>
@@ -83,12 +74,12 @@
             <Mode/>
         </Variable>
         <Variable>
-            <Value>Africa/Johannesburg</Value>
+            <Value></Value>
             <Name>TZ</Name>
             <Mode/>
         </Variable>
         <Variable>
-            <Value>SURFSHARK</Value>
+            <Value>**None**</Value>
             <Name>OPENVPN_PROVIDER</Name>
             <Mode/>
         </Variable>
@@ -103,7 +94,7 @@
             <Mode/>
         </Variable>
         <Variable>
-            <Value>ca-tor.prod.surfshark.com_udp</Value>
+            <Value>ca_toronto</Value>
             <Name>OPENVPN_CONFIG</Name>
             <Mode/>
         </Variable>
@@ -113,18 +104,18 @@
             <Mode/>
         </Variable>
         <Variable>
+            <Value>false</Value>
+            <Name>PRIVOXY_ENABLED</Name>
+            <Mode/>
+        </Variable>
+        <Variable>
             <Value></Value>
             <Name>LOCAL_NETWORK</Name>
             <Mode/>
         </Variable>
         <Variable>
-            <Value>209.222.18.222,209.222.18.218,37.235.1.174,37.235.1.177,1.1.1.1,1.0.0.1</Value>
+            <Value>1.1.1.1,1.0.0.1</Value>
             <Name>NAME_SERVERS</Name>
-            <Mode/>
-        </Variable>
-        <Variable>
-            <Value>true</Value>
-            <Name>CREATE_TUN_DEVICE</Name>
             <Mode/>
         </Variable>
         <Variable>
@@ -159,24 +150,24 @@
         </Variable>
     </Environment>
     <Labels/>
-    <Config Name="Config" Target="/config" Default="" Mode="rw" Description="Container Path: /home/xteve/conf"
+    <Config Name="Config" Target="/config" Default="/mnt/cache/appdata/xteve-vpn/" Mode="rw" Description="Container Path: /home/xteve/conf"
             Type="Path" Display="always" Required="true" Mask="false">/mnt/cache/appdata/xteve-vpn/
     </Config>
-    <Config Name="Temp Directory" Target="/temp/xteve" Default="" Mode="rw" Description="Container Path: /temp/xteve"
+    <Config Name="Temp Directory" Target="/temp/xteve" Default="/temp/xteve" Mode="rw" Description="Container Path: /temp/xteve"
             Type="Path" Display="always" Required="false" Mask="false">/tmp/xteve
     </Config>
-    <Config Name="PUID" Target="PUID" Default="" Mode="" Description="Container Variable: PUID" Type="Variable"
+    <Config Name="PUID" Target="PUID" Default="99" Mode="" Description="Container Variable: PUID" Type="Variable"
             Display="always" Required="false" Mask="false">99
     </Config>
-    <Config Name="PGID" Target="PGID" Default="" Mode="" Description="Container Variable: PGID" Type="Variable"
+    <Config Name="PGID" Target="PGID" Default="100" Mode="" Description="Container Variable: PGID" Type="Variable"
             Display="always" Required="false" Mask="false">100
     </Config>
     <Config Name="Timezone" Target="TZ" Default="" Mode="" Description="Container Variable: TZ" Type="Variable"
-            Display="always" Required="false" Mask="false">Africa/Johannesburg
+            Display="always" Required="false" Mask="false">
     </Config>
     <Config Name="OpenVPN Provider" Target="OPENVPN_PROVIDER" Default="**None**|PIA|SURFSHARK|VYPRVPN|CUSTOM" Mode=""
             Description="Container Variable: OPENVPN_PROVIDER" Type="Variable" Display="always" Required="true"
-            Mask="false">SURFSHARK
+            Mask="false">
     </Config>
     <Config Name="OpenVPN Username" Target="OPENVPN_USERNAME" Default="**None**" Mode=""
             Description="Container Variable: OPENVPN_USERNAME" Type="Variable" Display="always" Required="false"
@@ -193,24 +184,27 @@
             Description="Container Variable: OPENVPN_PROTOCOL - Not needed if provider is custom" Type="Variable"
             Display="always" Required="false" Mask="false">udp
     </Config>
+    <Config Name="Privoxy enabled" Target="PRIVOXY_ENABLED" Default="false" Mode=""
+            Description="Container Variable: PRIVOXY_ENABLED - disabled when OpenVPN is disabled. Runs on port 8181" Type="Variable"
+            Display="always" Required="false" Mask="false">false
+    </Config>
+    <Config Name="Host Port: Privoxy" Target="8181" Default="8181" Mode="tcp" Description="Privoxy Port: 8181"
+            Type="Port" Display="always" Required="true" Mask="false">8181
+    </Config>
     <Config Name="Local Network" Target="LOCAL_NETWORK" Default="" Mode=""
-            Description="Container Variable: LOCAL_NETWORK 192.168.0.0/24" Type="Variable" Display="always"
+            Description="Container Variable: LOCAL_NETWORK 192.168.0.0/24 - if this is not set then you will not have access to the container when OpenVPN is running" Type="Variable" Display="always"
             Required="false" Mask="false"/>
-    <Config Name="Name servers" Target="NAME_SERVERS" Default="" Mode="" Description="Container Variable: NAME_SERVERS"
-            Type="Variable" Display="always" Required="false" Mask="false">209.222.18.222,84.200.69.80,37.235.1.174,1.1.1.1,209.222.18.218,37.235.1.177,84.200.70.40,1.0.0.1
+    <Config Name="Name servers" Target="NAME_SERVERS" Default="1.1.1.1,1.0.0.1" Mode="" Description="Container Variable: NAME_SERVERS"
+            Type="Variable" Display="always" Required="false" Mask="false">1.1.1.1,1.0.0.1
     </Config>
     <Config Name="Host Port: xTeVe" Target="34400" Default="34400" Mode="tcp" Description="xTeVe Port: 34400"
             Type="Port" Display="always" Required="true" Mask="false">34400
     </Config>
-    <Config Name="Create TUN Device" Target="CREATE_TUN_DEVICE" Default="true|false" Mode=""
-            Description="Container Variable: CREATE_TUN_DEVICE" Type="Variable" Display="advanced" Required="false"
-            Mask="false">true
-    </Config>
     <Config Name="Container Debug" Target="DEBUG" Default="true|false" Mode="" Description="Container Variable: DEBUG"
             Type="Variable" Display="advanced" Required="false" Mask="false">false
     </Config>
-    <Config Name="OpenVPN custom options" Target="OPENVPN_OPTIONS" Default="" Mode=""
-            Description="Container Variable: OPENVPN_OPTIONS" Type="Variable" Display="advanced" Required="false"
+    <Config Name="OpenVPN custom options" Target="OPENVPN_OPTIONS" Default="--ping 10 --ping-restart 120" Mode=""
+            Description="Container Variable: OPENVPN_OPTIONS --ping 10 --ping-restart 120" Type="Variable" Display="advanced" Required="false"
             Mask="false"/>
     <Config Name="xTeVe Debug" Target="XTEVE_DEBUG" Default="0|1|2|3" Mode="" Description="optional set debug 0-3"
             Type="Variable" Display="advanced" Required="false" Mask="false">0
