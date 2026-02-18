@@ -13,7 +13,7 @@
   <Category>MediaApp:Video Network:Management</Category>
   <WebUI>http://[IP]:[PORT:8901]/</WebUI>
   <TemplateURL>https://raw.githubusercontent.com/brycelarge/unraid-templates/main/tuliprox-vpn.xml</TemplateURL>
-  <Icon>https://raw.githubusercontent.com/brycelarge/unraid-templates/main/images/tuliprox-vpn.png</Icon>
+  <Icon>https://raw.githubusercontent.com/brycelarge/unraid-templates/main/images/tuliprox-vpn.svg</Icon>
   <ExtraParams>--cap-add=NET_ADMIN --device=/dev/net/tun</ExtraParams>
   <PostArgs/>
   <CPUset/>
