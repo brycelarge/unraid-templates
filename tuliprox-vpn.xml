@@ -26,12 +26,14 @@
   <Config Name="Web UI Port" Target="8901" Default="8901" Mode="tcp" Description="Tuliprox web UI and API" Type="Port" Display="always" Required="true" Mask="false">8901</Config>
   <Config Name="HDHomeRun Port" Target="5004" Default="5004" Mode="tcp" Description="HDHomeRun emulation port for Plex/Emby/Jellyfin DVR discovery" Type="Port" Display="always" Required="false" Mask="false">5004</Config>
   <Config Name="Privoxy Port" Target="8118" Default="8118" Mode="tcp" Description="Privoxy HTTP proxy port (only needed if PRIVOXY_ENABLED=true)" Type="Port" Display="advanced" Required="false" Mask="false">8118</Config>
+  <Config Name="EPG Scraper Port" Target="3002" Default="3002" Mode="tcp" Description="EPG scraper guide server port (only needed if EPG_SCRAPER_ENABLED=true)" Type="Port" Display="advanced" Required="false" Mask="false">3002</Config>
 
   <!-- Volumes -->
   <Config Name="Config" Target="/app/config" Default="/mnt/user/appdata/tuliprox-vpn/config" Mode="rw" Description="Tuliprox config directory. Place config.yml and source.yml here." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/tuliprox-vpn/config</Config>
   <Config Name="Data" Target="/app/data" Default="/mnt/user/appdata/tuliprox-vpn/data" Mode="rw" Description="Tuliprox runtime data and database" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/tuliprox-vpn/data</Config>
   <Config Name="Backup" Target="/app/backup" Default="/mnt/user/appdata/tuliprox-vpn/backup" Mode="rw" Description="Tuliprox backup directory" Type="Path" Display="advanced" Required="false" Mask="false">/mnt/user/appdata/tuliprox-vpn/backup</Config>
   <Config Name="Downloads" Target="/app/downloads" Default="/mnt/user/appdata/tuliprox-vpn/downloads" Mode="rw" Description="Video download directory" Type="Path" Display="advanced" Required="false" Mask="false">/mnt/user/appdata/tuliprox-vpn/downloads</Config>
+  <Config Name="EPG Data" Target="/app/epg" Default="/mnt/user/appdata/tuliprox-vpn/epg" Mode="rw" Description="EPG scraper data directory. Contains channels.xml (your channel list) and the generated guide.xml. Only needed if EPG_SCRAPER_ENABLED=true." Type="Path" Display="advanced" Required="false" Mask="false">/mnt/user/appdata/tuliprox-vpn/epg</Config>
 
   <!-- VPN -->
   <Config Name="VPN Enabled" Target="VPN_ENABLED" Default="true" Mode="" Description="Enable OpenVPN tunnel" Type="Variable" Display="always" Required="true" Mask="false">true</Config>
@@ -46,6 +48,12 @@
   <!-- Networking -->
   <Config Name="Local Network" Target="LOCAL_NETWORK" Default="" Mode="" Description="IMPORTANT: Set to your LAN subnet (e.g. 192.168.1.0/24) so the web UI stays accessible when VPN is connected. Comma-separated for multiple subnets." Type="Variable" Display="always" Required="false" Mask="false"></Config>
   <Config Name="DNS Servers" Target="NAME_SERVERS" Default="" Mode="" Description="Comma-separated DNS servers to use inside the container (optional, e.g. 1.1.1.1,8.8.8.8)" Type="Variable" Display="advanced" Required="false" Mask="false"></Config>
+
+  <!-- EPG Scraper -->
+  <Config Name="EPG Scraper Enabled" Target="EPG_SCRAPER_ENABLED" Default="false" Mode="" Description="Enable the built-in EPG scraper. Clones iptv-org/epg at runtime and scrapes TV guide data from broadcaster websites (DStv, etc). Serves guide.xml on port 3002. Add url: http://127.0.0.1:3002/guide.xml to your source.yml epg sources." Type="Variable" Display="always" Required="false" Mask="false">false</Config>
+  <Config Name="EPG Grab Days" Target="EPG_GRAB_DAYS" Default="3" Mode="" Description="Number of days of EPG data to fetch per scrape run" Type="Variable" Display="advanced" Required="false" Mask="false">3</Config>
+  <Config Name="EPG Grab Interval" Target="EPG_GRAB_INTERVAL" Default="86400" Mode="" Description="How often to re-scrape EPG data, in seconds (default: 86400 = 24 hours)" Type="Variable" Display="advanced" Required="false" Mask="false">86400</Config>
+  <Config Name="EPG Serve Port" Target="EPG_SERVE_PORT" Default="3002" Mode="" Description="Internal port to serve guide.xml on (must match the EPG Scraper Port mapping above)" Type="Variable" Display="advanced" Required="false" Mask="false">3002</Config>
 
   <!-- Privoxy -->
   <Config Name="Privoxy Enabled" Target="PRIVOXY_ENABLED" Default="false" Mode="" Description="Enable Privoxy HTTP proxy" Type="Variable" Display="advanced" Required="false" Mask="false">false</Config>
