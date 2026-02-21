@@ -24,7 +24,7 @@
 
   <!-- Ports -->
   <Config Name="Web UI Port" Target="8901" Default="8901" Mode="tcp" Description="Tuliprox web UI and API" Type="Port" Display="always" Required="true" Mask="false">8901</Config>
-  <Config Name="HDHomeRun Port" Target="5004" Default="5004" Mode="tcp" Description="HDHomeRun emulation port for Plex/Emby/Jellyfin DVR discovery" Type="Port" Display="always" Required="false" Mask="false">5004</Config>
+  <Config Name="HDHomeRun Port 1" Target="5004" Default="5004" Mode="tcp" Description="HDHomeRun device port. Must match the port value set in config.yml hdhomerun.devices. Add additional port mappings for each extra device." Type="Port" Display="always" Required="false" Mask="false">5004</Config>
   <Config Name="Privoxy Port" Target="8118" Default="8118" Mode="tcp" Description="Privoxy HTTP proxy port (only needed if PRIVOXY_ENABLED=true)" Type="Port" Display="advanced" Required="false" Mask="false">8118</Config>
   <Config Name="EPG Scraper Port" Target="3002" Default="3002" Mode="tcp" Description="EPG scraper guide server port (only needed if EPG_SCRAPER_ENABLED=true)" Type="Port" Display="advanced" Required="false" Mask="false">3002</Config>
 
