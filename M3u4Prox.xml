@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <Container version="2">
   <Name>M3u4Prox</Name>
-  <Repository>brycelarge/m3u4prox</Repository>
-  <Registry>https://hub.docker.com/r/brycelarge/m3u4prox</Registry>
+  <Repository>ghcr.io/brycelarge/m3u4proxy</Repository>
+  <Registry>https://github.com/brycelarge/M3u4Proxy</Registry>
   <Network>bridge</Network>
   <Shell>sh</Shell>
   <Privileged>true</Privileged>
