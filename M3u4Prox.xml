@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>M3u4Prox</Name>
+  <Repository>brycelarge/m3u4prox</Repository>
+  <Registry>https://hub.docker.com/r/brycelarge/m3u4prox</Registry>
+  <Network>bridge</Network>
+  <Shell>sh</Shell>
+  <Privileged>true</Privileged>
+  <Support>https://github.com/brycelarge/M3u4Proxy</Support>
+  <Project>https://github.com/brycelarge/M3u4Proxy</Project>
+  <Overview>
+M3u4Prox is a full-stack IPTV playlist manager that makes IPTV easy. Supports many feeds and many outputs with a clean, responsive interface that works on desktop and mobile devices.
+
+Key Features:
+- Multiple M3U and Xtream Codes sources with auto-refresh
+- Channel browser with virtual scrolling and multiple views
+- Automated playlist generation with scheduling
+- Built-in EPG scraper and enrichment
+- HDHomeRun integration for over-the-air channels
+- Multi-source support and mobile responsive design
+- Built-in OpenVPN support to bypass ISP restrictions
+  </Overview>
+  <Category>MediaServer:Video</Category>
+  <TemplateURL>https://github.com/brycelarge/unraid-templates</TemplateURL>
+  <Icon>https://raw.githubusercontent.com/brycelarge/M3u4Proxy/main/public/logo.svg</Icon>
+  <!-- Ports -->
+  <Config Name="WebUI Port" Target="PORT" Default="3005" Mode="tcp" Description="Container Port: WebUI Port" Type="Port" Display="always" Required="true" Mask="false">3005</Config>
+  <Config Name="HDHomeRun Port" Target="HDHR_PORT" Default="5004" Mode="tcp" Description="Container Port: HDHomeRun virtual tuner port for Plex/Emby/Jellyfin" Type="Port" Display="advanced" Required="false" Mask="false">5004</Config>
+  <Config Name="Privoxy Port" Target="PRIVOXY_PORT" Default="8118" Mode="tcp" Description="Container Port: Privoxy proxy port (only needed if VPN enabled)" Type="Port" Display="advanced" Required="false" Mask="false">8118</Config>
+
+  <!-- Volumes -->
+  <Config Name="Data Path" Target="/data" Default="/mnt/user/appdata/m3u4prox" Mode="rw" Description="Container Path: All application data (DB, playlists, EPG, configs)" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/m3u4prox</Config>
+
+  <!-- Application -->
+  <Config Name="Admin Password" Target="ADMIN_PASSWORD" Default="admin" Mode="" Description="Variable: Admin login password" Type="Variable" Display="always" Required="false" Mask="true">admin</Config>
+  <Config Name="TMDB API Key" Target="TMDB_API_KEY" Default="" Mode="" Description="Variable: TMDB API key for EPG enrichment (optional)" Type="Variable" Display="advanced" Required="false" Mask="false"></Config>
+  <Config Name="Host IP" Target="HOST_IP" Default="" Mode="" Description="Variable: Host IP for HDHomeRun discovery (optional)" Type="Variable" Display="advanced" Required="false" Mask="false"></Config>
+
+  <!-- VPN -->
+  <Config Name="VPN Enabled" Target="VPN_ENABLED" Default="false" Mode="" Description="Variable: Enable/disable VPN routing" Type="Variable" Display="advanced" Required="false" Mask="false">false</Config>
+  <Config Name="VPN Provider" Target="OPENVPN_PROVIDER" Default="CUSTOM" Mode="" Description="Variable: VPN provider (CUSTOM, PIA, SURFSHARK, IPVANISH, NORDVPN, VYPRVPN, PROTONVPN)" Type="Variable" Display="advanced" Required="false" Mask="false">CUSTOM</Config>
+  <Config Name="VPN Config" Target="OPENVPN_CONFIG" Default="" Mode="" Description="Variable: Specific OpenVPN config file (optional)" Type="Variable" Display="advanced" Required="false" Mask="false"></Config>
+  <Config Name="VPN Username" Target="OPENVPN_USERNAME" Default="" Mode="" Description="Variable: VPN username" Type="Variable" Display="advanced" Required="false" Mask="false"></Config>
+  <Config Name="VPN Password" Target="OPENVPN_PASSWORD" Default="" Mode="" Description="Variable: VPN password" Type="Variable" Display="advanced" Required="false" Mask="true"></Config>
+  <Config Name="Local Network" Target="LOCAL_NETWORK" Default="" Mode="" Description="Variable: CIDRs to route outside VPN (optional)" Type="Variable" Display="advanced" Required="false" Mask="false"></Config>
+
+  <!-- EPG -->
+  <Config Name="EPG Grab Days" Target="EPG_GRAB_DAYS" Default="3" Mode="" Description="Variable: Number of days to grab EPG data" Type="Variable" Display="advanced" Required="false" Mask="false">3</Config>
+  <Config Name="EPG Grab Delay" Target="EPG_GRAB_DELAY" Default="500" Mode="" Description="Variable: Delay between EPG requests (ms)" Type="Variable" Display="advanced" Required="false" Mask="false">500</Config>
+  <Config Name="EPG Grab Timeout" Target="EPG_GRAB_TIMEOUT" Default="15000" Mode="" Description="Variable: EPG request timeout (ms)" Type="Variable" Display="advanced" Required="false" Mask="false">15000</Config>
+  <Config Name="EPG Grab Connections" Target="EPG_GRAB_CONNECTIONS" Default="4" Mode="" Description="Variable: Max concurrent EPG connections" Type="Variable" Display="advanced" Required="false" Mask="false">4</Config>
+  <Config Name="EPG Grab Cron" Target="EPG_GRAB_CRON" Default="0 4 * * *" Mode="" Description="Variable: EPG grab schedule (cron format)" Type="Variable" Display="advanced" Required="false" Mask="false">0 4 * * *</Config>
+  <Config Name="EPG Sync Cron" Target="EPG_SYNC_CRON" Default="0 3 * * 0" Mode="" Description="Variable: EPG sync schedule (cron format)" Type="Variable" Display="advanced" Required="false" Mask="false">0 3 * * 0</Config>
+
+  <!-- System -->
+  <Config Name="PUID" Target="PUID" Default="99" Mode="" Description="Variable: User ID for file permissions" Type="Variable" Display="advanced" Required="false" Mask="false">99</Config>
+  <Config Name="PGID" Target="PGID" Default="100" Mode="" Description="Variable: Group ID for file permissions" Type="Variable" Display="advanced" Required="false" Mask="false">100</Config>
+  <Config Name="UMASK" Target="UMASK" Default="022" Mode="" Description="Variable: File permissions mask" Type="Variable" Display="advanced" Required="false" Mask="false">022</Config>
+  <Config Name="TZ" Target="TZ" Default="UTC" Mode="" Description="Variable: Timezone" Type="Variable" Display="advanced" Required="false" Mask="false">UTC</Config>
+
+  <!-- Networking -->
+  <Config Name="DNS Servers" Target="DNS_SERVERS" Default="1.1.1.1,8.8.8.8" Mode="" Description="Variable: Comma-separated DNS servers" Type="Variable" Display="advanced" Required="false" Mask="false">1.1.1.1,8.8.8.8</Config>
+</Container>
