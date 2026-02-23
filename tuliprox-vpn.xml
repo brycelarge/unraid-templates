@@ -42,18 +42,11 @@
   <Config Name="VPN Password" Target="OPENVPN_PASSWORD" Default="" Mode="" Description="VPN service password" Type="Variable" Display="always" Required="true" Mask="true"></Config>
   <Config Name="VPN Config" Target="OPENVPN_CONFIG" Default="" Mode="" Description="Specific .ovpn config name to use (e.g. us9196.nordvpn.com.udp). Leave blank to use first available." Type="Variable" Display="always" Required="false" Mask="false"></Config>
   <Config Name="VPN Protocol" Target="OPENVPN_PROTOCOL" Default="udp" Mode="" Description="OpenVPN protocol: udp or tcp" Type="Variable" Display="advanced" Required="false" Mask="false">udp</Config>
-  <Config Name="Force VPN Config Update" Target="OPENVPN_FORCE_UPDATE" Default="false" Mode="" Description="Set true to force re-download of provider OpenVPN configs on next start" Type="Variable" Display="advanced" Required="false" Mask="false">false</Config>
   <Config Name="Extra OpenVPN Options" Target="OPENVPN_OPTIONS" Default="" Mode="" Description="Additional OpenVPN CLI flags (optional)" Type="Variable" Display="advanced" Required="false" Mask="false"></Config>
 
   <!-- Networking -->
   <Config Name="Local Network" Target="LOCAL_NETWORK" Default="" Mode="" Description="IMPORTANT: Set to your LAN subnet (e.g. 192.168.1.0/24) so the web UI stays accessible when VPN is connected. Comma-separated for multiple subnets." Type="Variable" Display="always" Required="false" Mask="false"></Config>
   <Config Name="DNS Servers" Target="NAME_SERVERS" Default="" Mode="" Description="Comma-separated DNS servers to use inside the container (optional, e.g. 1.1.1.1,8.8.8.8)" Type="Variable" Display="advanced" Required="false" Mask="false"></Config>
-
-  <!-- EPG Scraper -->
-  <Config Name="EPG Scraper Enabled" Target="EPG_SCRAPER_ENABLED" Default="false" Mode="" Description="Enable the built-in EPG scraper. Clones iptv-org/epg at runtime and scrapes TV guide data from broadcaster websites (DStv, etc). Serves guide.xml on port 3002. Add url: http://127.0.0.1:3002/guide.xml to your source.yml epg sources." Type="Variable" Display="always" Required="false" Mask="false">false</Config>
-  <Config Name="EPG Grab Days" Target="EPG_GRAB_DAYS" Default="3" Mode="" Description="Number of days of EPG data to fetch per scrape run" Type="Variable" Display="advanced" Required="false" Mask="false">3</Config>
-  <Config Name="EPG Grab Interval" Target="EPG_GRAB_INTERVAL" Default="86400" Mode="" Description="How often to re-scrape EPG data, in seconds (default: 86400 = 24 hours)" Type="Variable" Display="advanced" Required="false" Mask="false">86400</Config>
-  <Config Name="EPG Serve Port" Target="EPG_SERVE_PORT" Default="3002" Mode="" Description="Internal port to serve guide.xml on (must match the EPG Scraper Port mapping above)" Type="Variable" Display="advanced" Required="false" Mask="false">3002</Config>
 
   <!-- Privoxy -->
   <Config Name="Privoxy Enabled" Target="PRIVOXY_ENABLED" Default="false" Mode="" Description="Enable Privoxy HTTP proxy" Type="Variable" Display="advanced" Required="false" Mask="false">false</Config>
