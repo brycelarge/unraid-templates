@@ -20,7 +20,7 @@
   <DateInstalled/>
   <DonateText/>
   <DonateLink/>
-  <Requires>OpenVPN credentials for your VPN provider. See https://github.com/brycelarge/tuliprox-vpn for setup instructions.</Requires>
+  <Requires>OpenVPN credentials for your VPN provider. See https://github.com/brycelarge/openvpn-buildtools for setup instructions.</Requires>
 
   <!-- Ports -->
   <Config Name="Web UI Port" Target="8901" Default="8901" Mode="tcp" Description="Tuliprox web UI and API" Type="Port" Display="always" Required="true" Mask="false">8901</Config>
