@@ -22,7 +22,7 @@ Key Features:
   </Overview>
   <Category>MediaServer:Video</Category>
   <TemplateURL>https://github.com/brycelarge/unraid-templates</TemplateURL>
-  <Icon>https://raw.githubusercontent.com/brycelarge/M3u4Proxy/main/public/logo.svg</Icon>
+  <Icon>https://raw.githubusercontent.com/brycelarge/M3u4Proxy/master/public/logo.svg</Icon>
   <!-- Ports -->
   <Config Name="WebUI Port" Target="PORT" Default="3005" Mode="tcp" Description="Container Port: WebUI Port" Type="Port" Display="always" Required="true" Mask="false">3005</Config>
   <Config Name="HDHomeRun Port" Target="HDHR_PORT" Default="5004" Mode="tcp" Description="Container Port: HDHomeRun virtual tuner port for Plex/Emby/Jellyfin" Type="Port" Display="advanced" Required="false" Mask="false">5004</Config>
